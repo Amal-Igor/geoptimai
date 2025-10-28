@@ -128,33 +128,35 @@
           <div class="flex flex-1 items-center justify-center lg:justify-end" data-animate="fade-scale"
             data-animate-delay="0.1s">
             <div class="relative mx-auto w-full max-w-3xl">
-              <svg viewBox="0 0 720 360" class="h-auto w-full overflow-visible">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
                 <defs>
-                  <linearGradient id="optimAIGridFade" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"></stop>
-                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"></stop>
-                  </linearGradient>
-                  <pattern id="optimAIGrid" width="32" height="32" patternUnits="userSpaceOnUse">
-                    <path d="M 32 0 L 0 0 0 32" fill="none" stroke="url(#optimAIGridFade)" stroke-width="1"></path>
-                  </pattern>
-                  <linearGradient id="optimAIRing" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#6366f1"></stop>
-                    <stop offset="100%" stop-color="#a855f7"></stop>
+                  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#00D4FF" />
+                    <stop offset="1" stop-color="#0061FF" />
                   </linearGradient>
                 </defs>
-                <rect x="0" y="0" width="720" height="360" fill="transparent"></rect>
-                <rect x="0" y="0" width="720" height="360" fill="url(#optimAIGrid)" opacity="0.18"></rect>
-                <g style="transform-origin:50% 50%;transform-box:fill-box">
-                  <circle cx="360" cy="180" r="90" fill="#eef2ff"></circle>
-                  <path d="M 278 180 A 82 82 0 0 1 442 180" stroke="#dbeafe" stroke-width="14" fill="none"
-                    stroke-linecap="round"></path>
-                  <path d="M 278 180 A 82 82 0 0 1 442 180" stroke-width="14" fill="none" stroke-linecap="round"
-                    stroke="url(#optimAIRing)" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="0.62px 1px">
-                  </path>
-                  <circle cx="320" cy="180" r="12" fill="url(#optimAIRing)" opacity="0.6"></circle>
-                  <circle cx="400" cy="180" r="8" fill="#4f46e5" opacity="0.75"></circle>
-                  <image href="assets/logos/logo-optim-ai.svg" x="308" y="140" width="112" height="72" opacity="0.95">
-                  </image>
+
+                <!-- Centre l'icône puis applique une mise à l'échelle pulsée sur le groupe interne -->
+                <g transform="translate(60 60)">
+                  <g>
+                    <!-- Anneau principal -->
+                    <circle cx="0" cy="0" r="44" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" />
+                    <!-- Orbites -->
+                    <path d="M-40,0a40,24 0 0 1 80,0" fill="none" stroke="url(#g)" stroke-width="6"
+                      stroke-linecap="round" opacity="0.9" />
+                    <path d="M-30,0a30,18 0 0 0 60,0" fill="none" stroke="url(#g)" stroke-width="4"
+                      stroke-linecap="round" opacity="0.8" />
+                    <!-- Nœuds -->
+                    <circle cx="-40" cy="0" r="5" fill="url(#g)" />
+                    <circle cx="40" cy="0" r="5" fill="url(#g)" />
+                    <circle cx="0" cy="-44" r="5" fill="url(#g)" />
+                    <!-- Étincelle d’optimisation -->
+                    <path d="M0 -6 l0 -8 M0 6 l0 8 M-6 0 l-8 0 M6 0 l8 0" stroke="url(#g)" stroke-width="3"
+                      stroke-linecap="round" />
+                    <!-- Animation: grossit puis rétrécit -->
+                    <animateTransform attributeName="transform" type="scale" values="1;1.12;1" dur="2s"
+                      repeatCount="indefinite" />
+                  </g>
                 </g>
               </svg>
             </div>
@@ -599,8 +601,7 @@
       <div class="grid gap-10 md:grid-cols-4">
         <div class="space-y-4">
           <a class="flex items-center gap-3 text-lg font-semibold text-white" href="#">
-            <img src="assets/logos/mini-logo.svg" alt="optimAI symbol"
-              class="h-8 w-8 rounded-full bg-white p-1" />
+            <img src="assets/logos/mini-logo.svg" alt="optimAI symbol" class="h-8 w-8 rounded-full bg-white p-1" />
             <span class="text-xl font-extrabold uppercase tracking-[0.32em] text-white/70">optim</span><span
               class="text-xl font-extrabold text-white">AI</span>
           </a>
