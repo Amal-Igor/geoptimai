@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>optimAI — Master Your AI Search Presence</title>
+  <meta name="description"
+    content="optimAI helps you monitor and optimise how AI assistants talk about your brand. Track GEO rankings, surface insights in minutes, and own every AI answer." />
+  <meta name="application-name" content="optimAI" />
+  <meta name="author" content="optimAI" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="assets/icons/optimai-icons.svg" as="image" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/mini-logo.svg" />
+  <script>
+    tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: "#6366f1",
+              dark: "#4f46e5",
+              light: "#eef2ff",
+              soft: "#c7d2fe",
+            },
+            ink: {
+              DEFAULT: "#0b1220",
+              700: "#1f2937",
+              900: "#0f172a",
+            },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', "Inter", "system-ui", "sans-serif"],
+          },
+          borderRadius: {
+            xs: "0.75rem",
+          },
+          boxShadow: {
+            glow: "0 30px 70px -30px rgba(79, 70, 229, 0.45)",
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-white text-ink font-sans antialiased">
+  <header class="relative z-20 border-b border-indigo-100/40 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+      <a class="flex items-center gap-3 text-lg font-bold tracking-tight text-ink" href="#">
+        <img src="assets/logos/logo-optim-ai.svg" alt="optimAI logo" class="h-10 w-auto" width="128" height="40" />
+      </a>
+      <nav class="hidden items-center gap-8 text-sm font-semibold text-ink/70 lg:flex">
+        <a href="#hero" class="hover:text-primary-dark">Platform</a>
+        <a href="#era" class="hover:text-primary-dark">Why GEO</a>
+        <a href="#coverage" class="hover:text-primary-dark">Coverage</a>
+        <a href="#features" class="hover:text-primary-dark">Capabilities</a>
+        <a href="#cta" class="hover:text-primary-dark">Pricing</a>
+      </nav>
+      <div class="hidden items-center gap-3 lg:flex">
+        <a href="#contact" class="btn-secondary whitespace-nowrap text-sm uppercase tracking-wide">
+          Log in
+        </a>
+        <a href="#cta" class="btn-primary whitespace-nowrap text-sm uppercase tracking-wide">
+          Start free audit
+        </a>
+      </div>
+      <button class="lg:hidden rounded-xl border border-ink/10 p-2 text-ink" type="button" aria-label="Open menu">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <use href="assets/icons/optimai-icons.svg#icon-menu" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="relative overflow-hidden">
+      <div
+        class="mx-auto max-w-7xl px-6 pb-20 pt-16 sm:pb-24 lg:flex lg:min-h-[80vh] lg:items-center lg:pb-32 lg:pt-24">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div class="space-y-8">
+            <div data-animate="fade-up"
+              class="inline-flex items-center gap-2 rounded-full bg-primary-light px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary-dark">
+              <span class="inline-block h-2 w-2 rounded-full bg-primary-dark"></span>
+              Live GEO monitoring
+            </div>
+            <div class="space-y-6">
+              <h1 data-animate="fade-up" class="text-4xl font-black leading-tight text-ink sm:text-5xl lg:text-6xl">
+                Master your <span class="text-primary">AI search presence</span> with optimAI
+              </h1>
+              <p data-animate="fade-up" data-animate-delay="0.05s"
+                class="max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg">
+                Track how ChatGPT, Claude, Gemini, and the next wave of assistants talk about your brand.
+                optimAI surfaces anomalies in minutes, so you can fix positioning before your customers hear it.
+              </p>
+            </div>
+            <form data-animate="fade-up" data-animate-delay="0.1s"
+              class="flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-center" action="#cta">
+              <label for="domain" class="sr-only">Company domain</label>
+              <div class="relative w-full sm:max-w-sm">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary"
+                  aria-hidden="true">
+                  <use href="assets/icons/optimai-icons.svg#icon-globe" />
+                </svg>
+                <input id="domain" name="domain" type="url" placeholder="yourbrand.com"
+                  class="h-12 w-full rounded-xl border border-primary/25 bg-white/90 pl-12 pr-4 text-sm font-medium text-ink placeholder:text-ink/40 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  required inputmode="url" autocomplete="url" />
+              </div>
+              <button type="submit" class="btn-primary w-full text-sm uppercase tracking-wide sm:w-auto"
+                formaction="#cta">
+                Run my AI audit
+              </button>
+            </form>
+            <p data-animate="fade-up" data-animate-delay="0.15s"
+              class="text-sm font-medium uppercase tracking-[0.25em] text-ink/50">
+              No integrations • Results in &lt; 5 minutes • 30+ AI models observed
+            </p>
+          </div>
+
+          <div class="flex flex-1 items-center justify-center lg:justify-end" data-animate="fade-scale"
+            data-animate-delay="0.1s">
+            <div class="relative mx-auto w-full max-w-3xl">
+              <svg viewBox="0 0 720 360" class="h-auto w-full overflow-visible">
+                <defs>
+                  <linearGradient id="optimAIGridFade" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"></stop>
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"></stop>
+                  </linearGradient>
+                  <pattern id="optimAIGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+                    <path d="M 32 0 L 0 0 0 32" fill="none" stroke="url(#optimAIGridFade)" stroke-width="1"></path>
+                  </pattern>
+                  <linearGradient id="optimAIRing" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#6366f1"></stop>
+                    <stop offset="100%" stop-color="#a855f7"></stop>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="720" height="360" fill="transparent"></rect>
+                <rect x="0" y="0" width="720" height="360" fill="url(#optimAIGrid)" opacity="0.18"></rect>
+                <g style="transform-origin:50% 50%;transform-box:fill-box">
+                  <circle cx="360" cy="180" r="90" fill="#eef2ff"></circle>
+                  <path d="M 278 180 A 82 82 0 0 1 442 180" stroke="#dbeafe" stroke-width="14" fill="none"
+                    stroke-linecap="round"></path>
+                  <path d="M 278 180 A 82 82 0 0 1 442 180" stroke-width="14" fill="none" stroke-linecap="round"
+                    stroke="url(#optimAIRing)" pathLength="1" stroke-dashoffset="0px" stroke-dasharray="0.62px 1px">
+                  </path>
+                  <circle cx="320" cy="180" r="12" fill="url(#optimAIRing)" opacity="0.6"></circle>
+                  <circle cx="400" cy="180" r="8" fill="#4f46e5" opacity="0.75"></circle>
+                  <image href="assets/logos/logo-optim-ai.svg" x="308" y="140" width="112" height="72" opacity="0.95">
+                  </image>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="era"
+      class="relative overflow-hidden bg-gradient-to-br from-white via-primary-light to-indigo-100/60 py-20 text-ink sm:py-24">
+      <div class="pointer-events-none absolute inset-0 opacity-80">
+        <div class="absolute left-0 top-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[140px]"></div>
+        <div class="absolute right-[-10%] top-1/2 h-80 w-80 rounded-full bg-fuchsia-300/25 blur-[140px]"></div>
+        <div class="absolute bottom-[-20%] left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-sky-300/30 blur-[140px]">
+        </div>
+      </div>
+      <div class="relative mx-auto max-w-6xl px-6">
+        <div class="mx-auto max-w-3xl text-center" data-animate="fade-up">
+          <h2 class="text-3xl font-black sm:text-4xl md:text-5xl">
+            The next era of <span class="text-primary">search</span> is already live
+          </h2>
+          <p class="mt-4 text-base text-ink/70 sm:text-lg">
+            SEO tells you where you rank. optimAI tells you what AI answers actually say about you—right now, in every
+            geography.
+          </p>
+        </div>
+        <div class="mt-12 grid gap-8 sm:grid-cols-3">
+          <div class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm"
+            data-animate="fade-up">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <use href="assets/icons/optimai-icons.svg#icon-search" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-ink">Observe</h3>
+            <p class="mt-2 text-sm text-ink/70">
+              Monitor enterprise queries across AI models, surfaces, and languages. No screenshots required—optimAI
+              captures every answer verbatim.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm"
+            data-animate="fade-up" data-animate-delay="0.08s">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <use href="assets/icons/optimai-icons.svg#icon-eye" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-ink">Diagnose</h3>
+            <p class="mt-2 text-sm text-ink/70">
+              Spot hallucinations, missing products, and outdated messaging instantly with anomaly detection tuned for
+              AI Assistants.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-primary/10 bg-gradient-to-br from-white via-primary-light to-white p-[1px] shadow-xl"
+            data-animate="fade-up" data-animate-delay="0.16s">
+            <div class="h-full rounded-2xl bg-white p-6">
+              <div
+                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <use href="assets/icons/optimai-icons.svg#icon-arrow-collapse" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-ink">Improve</h3>
+              <p class="mt-2 text-sm text-ink/70">
+                Deploy optimAI playbooks that fix AI answers at the source—structured data, support content, PR, and
+                assistant integrations.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-12 text-center text-sm uppercase tracking-[0.3em] text-ink/60">
+          97% of Gen Z in the EU uses the internet daily — make sure AI gets your story right.
+        </p>
+      </div>
+    </section>
+
+    <section id="coverage" class="bg-slate-50 py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="text-center" data-animate="fade-up">
+          <h2 class="text-3xl font-black text-ink sm:text-4xl">
+            Global AI <span class="text-primary">search coverage</span>
+          </h2>
+          <p class="mt-4 text-base text-ink/70 sm:text-lg">
+            All the assistants your customers trust—tracked from the moment a new answer ships.
+          </p>
+        </div>
+        <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up">
+            <img src="assets/model_providers/openai.svg" alt="OpenAI logo" class="mx-auto h-14 object-contain"
+              width="80" height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">ChatGPT · o1 · GPT-4o mini</p>
+          </div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up"
+            data-animate-delay="0.05s">
+            <img src="assets/model_providers/anthropic.svg" alt="Anthropic logo" class="mx-auto h-14 object-contain"
+              width="80" height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">Claude 3.5 · Claude 3 Haiku</p>
+          </div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up"
+            data-animate-delay="0.1s">
+            <img src="assets/model_providers/google.svg" alt="Google logo" class="mx-auto h-14 object-contain"
+              width="80" height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">Gemini · AI Overviews</p>
+          </div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up"
+            data-animate-delay="0.15s">
+            <img src="assets/model_providers/mistral.svg" alt="Mistral AI logo" class="mx-auto h-14 object-contain"
+              width="80" height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">Mistral Large · Le Chat</p>
+          </div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up"
+            data-animate-delay="0.2s">
+            <img src="assets/model_providers/perplexity.svg" alt="Perplexity logo" class="mx-auto h-14 object-contain"
+              width="80" height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">Perplexity Pro · Focus Models</p>
+          </div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up"
+            data-animate-delay="0.25s">
+            <img src="assets/model_providers/deepseek.svg" alt="DeepSeek logo" class="mx-auto h-14 object-contain"
+              width="80" height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">DeepSeek-V3 · DeepSeek-R1</p>
+          </div>
+          <div class="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm" data-animate="fade-up"
+            data-animate-delay="0.3s">
+            <img src="assets/model_providers/grok.svg" alt="Grok logo" class="mx-auto h-14 object-contain" width="80"
+              height="80" />
+            <p class="mt-3 text-center text-sm font-semibold text-ink/70">xAI Grok · Real-time</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="bg-white py-20 sm:py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+          <div class="space-y-6">
+            <span data-animate="fade-up"
+              class="inline-flex items-center gap-2 rounded-full bg-primary-light px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary-dark">
+              Why teams switch to optimAI
+            </span>
+            <h2 data-animate="fade-up" data-animate-delay="0.05s" class="text-3xl font-black text-ink sm:text-4xl">
+              Ship AI-ready narratives the moment answers change.
+            </h2>
+            <p data-animate="fade-up" data-animate-delay="0.1s" class="text-base text-ink/70 sm:text-lg">
+              optimAI connects marketing, customer experience, and product teams with a live understanding of how AI
+              agents speak about your brand. No more waiting on manual spot-checks.
+            </p>
+            <ul class="space-y-3 text-sm text-ink/70" data-animate="fade-up" data-animate-delay="0.15s">
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-1 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">1</span>
+                Synthetic and organic prompts collected continuously in every market you care about.
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-1 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">2</span>
+                Smart clustering surfaces emerging issues—pricing errors, product gaps, competitor mentions.
+              </li>
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-1 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary/15 text-xs font-bold text-primary">3</span>
+                Ready-to-send briefs accelerate fixes across docs, schema, PR, and support flows.
+              </li>
+            </ul>
+          </div>
+          <div class="grid gap-6">
+            <div class="feature-card p-6 shadow-glow" data-animate="fade-up">
+              <div class="feature-icon">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <use href="assets/icons/optimai-icons.svg#icon-structure" />
+                </svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold text-ink">Per-model scoring</h3>
+              <p class="mt-2 text-sm text-ink/65">
+                Understand exposure and sentiment at a glance with GEO scoring tailored to each assistant and device.
+              </p>
+            </div>
+            <div class="feature-card p-6 shadow-glow" data-animate="fade-up" data-animate-delay="0.08s">
+              <div class="feature-icon">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <use href="assets/icons/optimai-icons.svg#icon-expand" />
+                </svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold text-ink">Comparative intelligence</h3>
+              <p class="mt-2 text-sm text-ink/65">
+                Benchmark every answer against competitors and historical data to spot positioning shifts first.
+              </p>
+            </div>
+            <div class="feature-card p-6 shadow-glow" data-animate="fade-up" data-animate-delay="0.16s">
+              <div class="feature-icon">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <use href="assets/icons/optimai-icons.svg#icon-list-arrow" />
+                </svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold text-ink">Actionable playbooks</h3>
+              <p class="mt-2 text-sm text-ink/65">
+                Translate findings into tasks with owned workflows, Jira exports, and CMS-ready smart content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visibility" class="pt-16 sm:pt-20 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="bg-emerald-50 p-4 sm:p-8">
+          <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+            <div>
+              <div class="mx-auto max-w-3xl">
+                <div class="mb-3"><span
+                    class="inline-flex items-center gap-2 border border-emerald-200 bg-white px-3 py-1 text-xs font-medium text-emerald-700">AI
+                    Search</span></div>
+                <h3 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Win the new answer box</h3>
+                <p class="mt-3 text-gray-900/70">Traditional SEO stops at ten blue links. We help you influence what AI
+                  actually says by turning insights into action.</p>
+              </div>
+              <div class="mt-8 space-y-4">
+                <div>
+                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">Overall Share of
+                      Answer</span><span class="font-semibold text-gray-900">68<!-- -->%</span></div>
+                  <div class="mt-2 h-2 bg-emerald-50">
+                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:68%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">ChatGPT
+                      Coverage</span><span class="font-semibold text-gray-900">72<!-- -->%</span></div>
+                  <div class="mt-2 h-2 bg-emerald-50">
+                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:72%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">Claude
+                      Coverage</span><span class="font-semibold text-gray-900">66<!-- -->%</span></div>
+                  <div class="mt-2 h-2 bg-emerald-50">
+                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:66%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">Perplexity
+                      Coverage</span><span class="font-semibold text-gray-900">61<!-- -->%</span></div>
+                  <div class="mt-2 h-2 bg-emerald-50">
+                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:61%"></div>
+                  </div>
+                </div>
+              </div>
+              <ul class="mt-6 space-y-2 text-sm text-secondary">
+                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-check mt-1 h-4 w-4 text-primary" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>Identify the sources models cite most and which to improve.</li>
+                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-check mt-1 h-4 w-4 text-primary" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>See how LLMs describe your brand vs. competitors.</li>
+                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-check mt-1 h-4 w-4 text-primary" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5"></path>
+                  </svg>Measure week-over-week, prove ROI in the boardroom.</li>
+              </ul>
+            </div>
+            <div class="relative">
+              <div class="relative bg-white p-4 sm:p-6">
+                <div class="absolute -right-6 -top-6 h-28 w-28 opacity-30 blur-2xl" style="background:#61EEC2"></div>
+                <div class="flex items-center justify-between"><span
+                    class="inline-flex items-center gap-2 border border-emerald-200 bg-white px-2.5 py-1 text-xs font-medium text-emerald-700"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-chart-column h-3.5 w-3.5" aria-hidden="true">
+                      <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
+                      <path d="M18 17V9"></path>
+                      <path d="M13 17V5"></path>
+                      <path d="M8 17v-3"></path>
+                    </svg> Share of voice</span><span class="text-xs text-gray-900/60">Last 7 days</span></div>
+                <div class="mt-4 h-28">
+                  <div class="recharts-responsive-container pointer-events-none"
+                    style="width: 100%; height: 100%; min-width: 0px;">
+                    <div style="width: 0px; height: 0px; overflow: visible;">
+                      <div class="recharts-wrapper"
+                        style="position: relative; cursor: default; width: 508px; height: 112px;"><svg
+                          role="application" tabindex="0" class="recharts-surface" width="508" height="112"
+                          viewBox="0 0 508 112" style="width: 100%; height: 100%;">
+                          <title></title>
+                          <desc></desc>
+                          <defs>
+                            <clipPath id="recharts1-clip">
+                              <rect x="5" y="5" height="102" width="498"></rect>
+                            </clipPath>
+                          </defs>
+                          <g class="recharts-cartesian-grid">
+                            <g class="recharts-cartesian-grid-horizontal">
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="5" y1="51.36363636363637" x2="503" y2="51.36363636363637"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="5" y1="5" x2="503" y2="5"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="5" y1="107" x2="503" y2="107"></line>
+                            </g>
+                            <g class="recharts-cartesian-grid-vertical">
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="50.27272727272727" y1="5" x2="50.27272727272727" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="95.54545454545455" y1="5" x2="95.54545454545455" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="140.8181818181818" y1="5" x2="140.8181818181818" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="186.0909090909091" y1="5" x2="186.0909090909091" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="231.36363636363637" y1="5" x2="231.36363636363637" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="276.6363636363636" y1="5" x2="276.6363636363636" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="321.90909090909093" y1="5" x2="321.90909090909093" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="367.1818181818182" y1="5" x2="367.1818181818182" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="412.45454545454544" y1="5" x2="412.45454545454544" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="457.72727272727275" y1="5" x2="457.72727272727275" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="503" y1="5" x2="503" y2="107"></line>
+                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
+                                height="102" x1="5" y1="5" x2="5" y2="107"></line>
+                            </g>
+                          </g>
+                          <g class="recharts-layer recharts-line">
+                            <path stroke="#61EEC2" stroke-width="2" fill="none" id="recharts-line-«r1c»" height="102"
+                              width="498" class="recharts-curve recharts-line-curve"
+                              stroke-dasharray="506.4769592285156px 0px"
+                              d="M5,84.745C20.091,81.5,35.182,78.255,50.273,75.473C65.364,72.691,80.455,70.836,95.545,68.055C110.636,65.273,125.727,58.782,140.818,58.782C155.909,58.782,171,66.2,186.091,66.2C201.182,66.2,216.273,58.473,231.364,55.073C246.455,51.673,261.545,48.582,276.636,45.8C291.727,43.018,306.818,38.382,321.909,38.382C337,38.382,352.091,42.091,367.182,42.091C382.273,42.091,397.364,34.982,412.455,32.818C427.545,30.655,442.636,30.964,457.727,29.109C472.818,27.255,487.909,24.473,503,21.691">
+                            </path>
+                          </g>
+                        </svg></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hidden sm:grid mt-6 grid-cols-2 gap-4 text-sm">
+                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
+                    <div class="flex items-center justify-between"><span class="font-medium text-gray-900">Top
+                        Cited</span><span class="text-xs text-gray-900/60">88<!-- -->%</span></div>
+                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
+                        aria-hidden="true">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                      </svg> <!-- -->brand.com/docs</div>
+                  </div>
+                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
+                    <div class="flex items-center justify-between"><span
+                        class="font-medium text-gray-900">Industry</span><span
+                        class="text-xs text-gray-900/60">81<!-- -->%</span></div>
+                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
+                        aria-hidden="true">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                      </svg> <!-- -->industry.org</div>
+                  </div>
+                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
+                    <div class="flex items-center justify-between"><span
+                        class="font-medium text-gray-900">News</span><span
+                        class="text-xs text-gray-900/60">72<!-- -->%</span></div>
+                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
+                        aria-hidden="true">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                      </svg> <!-- -->news.site</div>
+                  </div>
+                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
+                    <div class="flex items-center justify-between"><span
+                        class="font-medium text-gray-900">Community</span><span
+                        class="text-xs text-gray-900/60">54<!-- -->%</span></div>
+                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
+                        aria-hidden="true">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                      </svg> <!-- -->forum.example</div>
+                  </div>
+                </div>
+                <div class="mt-6 rounded-md border border-emerald-100 bg-white p-4">
+                  <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" class="lucide lucide-zap h-4 w-4 text-emerald-600" aria-hidden="true">
+                      <path
+                        d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                      </path>
+                    </svg><span class="text-sm font-medium text-gray-900">Actions suggested</span></div>
+                  <ul class="mt-2 list-disc space-y-1 pl-6 text-sm text-gray-900/80">
+                    <li>Strengthen documentation pages with structured citations.</li>
+                    <li>Pitch an expert quote to earn a news.site mention.</li>
+                    <li>Publish a comparison guide targeting missing queries.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="relative bg-gradient-to-br from-primary/10 via-white to-fuchsia-100/30 py-24">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <span data-animate="fade-up"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary-dark">
+          Ready to lead GEO
+        </span>
+        <h2 data-animate="fade-up" data-animate-delay="0.05s" class="mt-6 text-4xl font-black text-ink">
+          Deploy optimAI and own every AI conversation about your brand
+        </h2>
+        <p data-animate="fade-up" data-animate-delay="0.1s" class="mt-4 text-base text-ink/70 sm:text-lg">
+          Start with a focused sprint: we monitor your top journeys across assistants for two weeks, deliver insights,
+          and set up the workflows that keep you ahead.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" data-animate="fade-up"
+          data-animate-delay="0.15s">
+          <a href="#hero" class="btn-primary text-sm uppercase tracking-wide">Book a strategy session</a>
+          <a href="#contact" class="btn-secondary text-sm uppercase tracking-wide">Talk to sales</a>
+        </div>
+        <p data-animate="fade-up" data-animate-delay="0.2s"
+          class="mt-6 text-xs uppercase tracking-[0.32em] text-ink/50">
+          Trusted by product, marketing, and comms teams running AI-first programs.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-ink-900 text-white">
+    <div class="mx-auto max-w-6xl px-6 py-12">
+      <div class="grid gap-10 md:grid-cols-4">
+        <div class="space-y-4">
+          <a class="flex items-center gap-3 text-lg font-semibold text-white" href="#">
+            <img src="assets/logos/mini-logo.svg" alt="optimAI symbol"
+              class="h-8 w-8 rounded-full bg-white p-1" />
+            <span class="text-xl font-extrabold uppercase tracking-[0.32em] text-white/70">optim</span><span
+              class="text-xl font-extrabold text-white">AI</span>
+          </a>
+          <p class="text-sm text-white/60">
+            Master your AI Search presence with always-on GEO monitoring, instant insights, and actionable playbooks.
+          </p>
+        </div>
+        <div class="footer-nav space-y-3 text-sm">
+          <h3 class="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">Platform</h3>
+          <a href="#hero">Overview</a><br />
+          <a href="#features">Capabilities</a><br />
+          <a href="#coverage">Coverage</a>
+        </div>
+        <div class="footer-nav space-y-3 text-sm">
+          <h3 class="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">Company</h3>
+          <a href="#era">Why GEO</a><br />
+          <a href="#cta">Pricing</a><br />
+          <a href="#contact">Security</a>
+        </div>
+        <div class="footer-nav space-y-3 text-sm">
+          <h3 class="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">Connect</h3>
+          <a href="mailto:hello@optimai.co">hello@optimai.co</a><br />
+          <a href="#">LinkedIn</a><br />
+          <a href="#">X / Twitter</a>
+        </div>
+      </div>
+      <div
+        class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span id="year">2024</span> optimAI. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Status</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    </script>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+
+</html>
