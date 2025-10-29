@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GeOptimAI GEO Visibility Monitor</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #ecebff;
+      --primary-soft: rgba(99, 102, 241, 0.12);
+      --accent-teal: #22d3ee;
+      --accent-pink: #f472b6;
+      --accent-lime: #bef264;
+      --ink: #0b1220;
+      --ink-soft: rgba(11, 18, 32, 0.72);
+      --surface: #f7f6ff;
+      --surface-muted: rgba(236, 235, 255, 0.65);
+      --ring-shadow: rgba(99, 102, 241, 0.28);
+    }
+
+    body {
+      background: var(--surface);
+      color: var(--ink);
+      font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 48px 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app {
+      max-width: 920px;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(236, 235, 255, 0.92), #ffffff 92%);
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      border-radius: 28px;
+      padding: 32px 40px;
+      box-shadow: 0 32px 65px -28px rgba(79, 70, 229, 0.35);
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    header p {
+      margin: 0;
+      color: var(--ink-soft);
+      max-width: 680px;
+    }
+
+    .selector-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .selector {
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.16);
+      border-radius: 18px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    .selector label {
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(79, 70, 229, 0.85);
+      font-weight: 600;
+    }
+
+    select {
+      appearance: none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      background: #fff url('data:image/svg+xml;utf8,<svg fill="%236366f1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 12"><path d="M2.3 2.3a1 1 0 0 1 1.4 0L10 8.6l6.3-6.3a1 1 0 0 1 1.4 1.4L10 11.4 2.3 3.7a1 1 0 0 1 0-1.4z"/></svg>') no-repeat right 14px center / 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      box-shadow: 0 0 0 3px transparent;
+      transition: box-shadow 0.2s ease, border 0.2s ease;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.22);
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .summary-card {
+      border-radius: 20px;
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      padding: 20px 24px;
+      background: rgba(255, 255, 255, 0.78);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-card::after {
+      content: "";
+      position: absolute;
+      inset: -20% 40% 15% -35%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.14), transparent 65%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .summary-title {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(79, 70, 229, 0.7);
+      font-weight: 600;
+    }
+
+    .summary-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .summary-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 13px;
+      border-radius: 999px;
+      font-weight: 600;
+      background: rgba(99, 102, 241, 0.14);
+      color: var(--primary-dark);
+    }
+
+    .badge.positive {
+      background: rgba(190, 242, 100, 0.24);
+      color: #3b7f00;
+    }
+
+    .badge.negative {
+      background: rgba(244, 114, 182, 0.16);
+      color: #be185d;
+    }
+
+    .content {
+      display: grid;
+      gap: 24px;
+    }
+
+    .insight-panel {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.14), rgba(34, 211, 238, 0.12));
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      border-radius: 24px;
+      box-shadow: 0 24px 55px -32px rgba(79, 70, 229, 0.35);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) minmax(260px, 1fr);
+      gap: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(99, 102, 241, 0.12);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    th {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(79, 70, 229, 0.78);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .chart {
+      position: relative;
+      background: rgba(247, 246, 255, 0.92);
+      border-radius: 20px;
+      padding: 26px 28px 32px;
+      border: 1px solid rgba(99, 102, 241, 0.16);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .chart h2 {
+      margin: 0;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(79, 70, 229, 0.85);
+    }
+
+    .bar-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 48px;
+      height: 180px;
+    }
+
+    .bar {
+      width: 140px;
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.85), rgba(79, 70, 229, 0.9));
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      border-radius: 16px 16px 8px 8px;
+      transition: height 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 35px -18px rgba(79, 70, 229, 0.45);
+    }
+
+    .bar.competitor {
+      background: linear-gradient(180deg, rgba(34, 211, 238, 0.85), rgba(13, 148, 136, 0.9));
+      box-shadow: 0 18px 35px -18px rgba(13, 148, 136, 0.45);
+    }
+
+    .bar-value {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .bar-label {
+      position: absolute;
+      bottom: -36px;
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .chart-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .table-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 14px;
+      color: rgba(11, 18, 32, 0.64);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 28px 16px;
+      }
+
+      .app {
+        border-radius: 22px;
+        padding: 28px 24px;
+      }
+
+      .insight-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-container {
+        gap: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>GeOptimAI GEO Pulse — Perfume Market</h1>
+      <p>Benchmark generative search visibility across high-intent perfume queries. Analyse coverage by product, channel, and domain to surface quick optimisation wins.</p>
+    </header>
+
+    <div class="selector-panel">
+      <div class="selector">
+        <label for="product-select">Hero Product</label>
+        <select id="product-select"></select>
+      </div>
+      <div class="selector">
+        <label for="channel-select">Generative Channel</label>
+        <select id="channel-select"></select>
+      </div>
+      <div class="selector">
+        <label for="persona-select">Persona Intent</label>
+        <select id="persona-select">
+          <option value="Luxury Enthusiast">Luxury Enthusiast</option>
+          <option value="Gift Shopper">Gift Shopper</option>
+          <option value="Fragrance Collector">Fragrance Collector</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-card">
+        <span class="summary-title">Visibility Delta</span>
+        <span class="summary-value" id="delta-value">+0 pts</span>
+        <div class="summary-meta">
+          <span class="badge" id="delta-badge">Holding</span>
+          <span id="delta-copy">Awaiting selection.</span>
+        </div>
+      </div>
+      <div class="summary-card">
+        <span class="summary-title">Share of Generative Presence</span>
+        <span class="summary-value" id="share-value">0%</span>
+        <div class="summary-meta">
+          <span class="badge" id="share-badge">—</span>
+          <span id="share-copy">Channel benchmark not available.</span>
+        </div>
+      </div>
+      <div class="summary-card">
+        <span class="summary-title">Visibility Momentum</span>
+        <span class="summary-value" id="momentum-value">Stable</span>
+        <div class="summary-meta">
+          <span class="badge" id="momentum-badge">Week +0</span>
+          <span id="momentum-copy">Trend signal synthesised from dummy data.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="insight-panel">
+        <div>
+          <h2 style="margin:0 0 12px; font-size:18px; letter-spacing:-0.01em;">Channel Breakdown</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Signal</th>
+                <th>mybrand.com</th>
+                <th>competitor.com</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+          <div class="table-footer">
+            <span id="insight-note">Select a product to surface insights.</span>
+            <span>Scores are scaled 0 – 100 by generative share of voice.</span>
+          </div>
+        </div>
+        <div class="chart">
+          <h2>Domain visibility snapshot</h2>
+          <div class="bar-container">
+            <div class="bar" id="mybrand-bar">
+              <div class="bar-value" id="mybrand-value">0</div>
+              <div class="bar-label">mybrand.com</div>
+            </div>
+            <div class="bar competitor" id="competitor-bar">
+              <div class="bar-value" id="competitor-value">0</div>
+              <div class="bar-label">competitor.com</div>
+            </div>
+          </div>
+          <div class="chart-meta">
+            <span id="chart-caption">Awaiting selection.</span>
+            <span>Source · Synthetic GEO sample week 24</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>GeOptimAI GEO labs · Synthetic data for prototype purposes only · Add live connectors when ready.</footer>
+  </div>
+
+  <script>
+    const GEO_DATA = {
+      "Chanel No.5": {
+        channels: {
+          "ChatGPT": {
+            scores: { "mybrand.com": 78, "competitor.com": 92 },
+            share: 0.42,
+            momentum: "+3 pts wow",
+            signals: [
+              { label: "Direct Mention Rate", mybrand: 74, competitor: 89 },
+              { label: "Buying Guide Visibility", mybrand: 82, competitor: 94 },
+              { label: "Influencer Recommendation", mybrand: 68, competitor: 81 }
+            ]
+          },
+          "Perplexity": {
+            scores: { "mybrand.com": 84, "competitor.com": 77 },
+            share: 0.54,
+            momentum: "+6 pts wow",
+            signals: [
+              { label: "Citation Presence", mybrand: 88, competitor: 72 },
+              { label: "Answer Shelf Positioning", mybrand: 79, competitor: 75 },
+              { label: "Retailer Reference Mentions", mybrand: 86, competitor: 81 }
+            ]
+          },
+          "Gemini": {
+            scores: { "mybrand.com": 71, "competitor.com": 81 },
+            share: 0.38,
+            momentum: "-2 pts wow",
+            signals: [
+              { label: "Featured Snippet Hand-off", mybrand: 65, competitor: 75 },
+              { label: "Brand Preference Score", mybrand: 74, competitor: 79 },
+              { label: "Purchase Link Prominence", mybrand: 76, competitor: 83 }
+            ]
+          }
+        }
+      },
+      "Dior Sauvage": {
+        channels: {
+          "ChatGPT": {
+            scores: { "mybrand.com": 65, "competitor.com": 80 },
+            share: 0.36,
+            momentum: "+1 pt wow",
+            signals: [
+              { label: "Top Recommendation Rate", mybrand: 60, competitor: 83 },
+              { label: "Guided Experience Score", mybrand: 68, competitor: 78 },
+              { label: "AI Storefront Presence", mybrand: 61, competitor: 74 }
+            ]
+          },
+          "Perplexity": {
+            scores: { "mybrand.com": 72, "competitor.com": 69 },
+            share: 0.48,
+            momentum: "+4 pts wow",
+            signals: [
+              { label: "In-depth Comparison Coverage", mybrand: 75, competitor: 68 },
+              { label: "AI Aggregator Mentions", mybrand: 78, competitor: 71 },
+              { label: "Commerce Link Availability", mybrand: 63, competitor: 70 }
+            ]
+          },
+          "Gemini": {
+            scores: { "mybrand.com": 58, "competitor.com": 74 },
+            share: 0.32,
+            momentum: "-3 pts wow",
+            signals: [
+              { label: "Factual Citation Alignment", mybrand: 56, competitor: 72 },
+              { label: "Lifestyle Fit Narratives", mybrand: 61, competitor: 76 },
+              { label: "Purchase CTA Strength", mybrand: 59, competitor: 73 }
+            ]
+          }
+        }
+      },
+      "YSL Libre": {
+        channels: {
+          "ChatGPT": {
+            scores: { "mybrand.com": 84, "competitor.com": 76 },
+            share: 0.57,
+            momentum: "+5 pts wow",
+            signals: [
+              { label: "Top 3 Recommendation Presence", mybrand: 88, competitor: 79 },
+              { label: "Sensory Storytelling Index", mybrand: 82, competitor: 74 },
+              { label: "Call-to-Action Cohesion", mybrand: 86, competitor: 75 }
+            ]
+          },
+          "Perplexity": {
+            scores: { "mybrand.com": 79, "competitor.com": 82 },
+            share: 0.52,
+            momentum: "+2 pts wow",
+            signals: [
+              { label: "Availability Signals", mybrand: 74, competitor: 86 },
+              { label: "Expert Round-up Mentions", mybrand: 81, competitor: 79 },
+              { label: "Retail Integration Score", mybrand: 78, competitor: 84 }
+            ]
+          },
+          "Gemini": {
+            scores: { "mybrand.com": 69, "competitor.com": 71 },
+            share: 0.44,
+            momentum: "+1 pt wow",
+            signals: [
+              { label: "Brand Familiarity Memory", mybrand: 70, competitor: 72 },
+              { label: "Persona Alignment Fit", mybrand: 67, competitor: 69 },
+              { label: "Link Depth & Freshness", mybrand: 71, competitor: 74 }
+            ]
+          }
+        }
+      }
+    };
+
+    const productSelect = document.getElementById("product-select");
+    const channelSelect = document.getElementById("channel-select");
+    const personaSelect = document.getElementById("persona-select");
+    const resultsBody = document.getElementById("results-body");
+    const myBrandBar = document.getElementById("mybrand-bar");
+    const competitorBar = document.getElementById("competitor-bar");
+    const myBrandValue = document.getElementById("mybrand-value");
+    const competitorValue = document.getElementById("competitor-value");
+    const chartCaption = document.getElementById("chart-caption");
+    const insightNote = document.getElementById("insight-note");
+
+    const deltaValue = document.getElementById("delta-value");
+    const deltaBadge = document.getElementById("delta-badge");
+    const deltaCopy = document.getElementById("delta-copy");
+    const shareValue = document.getElementById("share-value");
+    const shareBadge = document.getElementById("share-badge");
+    const shareCopy = document.getElementById("share-copy");
+    const momentumValue = document.getElementById("momentum-value");
+    const momentumBadge = document.getElementById("momentum-badge");
+    const momentumCopy = document.getElementById("momentum-copy");
+
+    // Populate product options
+    Object.keys(GEO_DATA).forEach(product => {
+      const option = document.createElement("option");
+      option.value = product;
+      option.textContent = product;
+      productSelect.appendChild(option);
+    });
+
+    // Populate channel options based on first product
+    function populateChannels(product) {
+      const channels = Object.keys(GEO_DATA[product].channels);
+      channelSelect.innerHTML = "";
+      channels.forEach(channel => {
+        const option = document.createElement("option");
+        option.value = channel;
+        option.textContent = channel;
+        channelSelect.appendChild(option);
+      });
+    }
+
+    function updateSummary(product, channel) {
+      const { scores, share, momentum } = GEO_DATA[product].channels[channel];
+      const delta = scores["mybrand.com"] - scores["competitor.com"];
+      const badgeClass = delta > 0 ? "positive" : delta < 0 ? "negative" : "";
+      deltaValue.textContent = `${delta >= 0 ? "+" : ""}${delta} pts`;
+      deltaBadge.className = `badge ${badgeClass}`.trim();
+      deltaBadge.textContent = delta > 0 ? "Gaining" : delta < 0 ? "Losing" : "Holding";
+      deltaCopy.textContent = delta > 0
+        ? "mybrand.com leads this channel snapshot."
+        : delta < 0
+          ? "competitor.com outperforms—review guided answers."
+          : "Parity detected—optimise for differentiation.";
+
+      shareValue.textContent = `${Math.round(share * 100)}%`;
+      const shareTier = share >= 0.55 ? "positive" : share <= 0.4 ? "negative" : "";
+      shareBadge.className = `badge ${shareTier}`.trim();
+      shareBadge.textContent = share >= 0.55 ? "Tier 1" : share <= 0.4 ? "Tier 3" : "Tier 2";
+      shareCopy.textContent = share >= 0.55
+        ? "High coverage—lean into co-created experiences."
+        : share <= 0.4
+          ? "Below optimal coverage—activate creator workflow."
+          : "Solid traction—monitor shifts weekly.";
+
+      momentumValue.textContent = momentum.includes("-") ? "Cooling" : "Accelerating";
+      const momentumClass = momentum.includes("-") ? "negative" : "positive";
+      momentumBadge.className = `badge ${momentumClass}`;
+      momentumBadge.textContent = momentum.includes("-") ? `Week ${momentum}` : `Week ${momentum}`;
+      momentumCopy.textContent = momentum.includes("-")
+        ? "Trend softening—refresh AI briefings and content."
+        : "Momentum building—amplify hero assets.";
+    }
+
+    function updateTable(product, channel) {
+      const signals = GEO_DATA[product].channels[channel].signals;
+      resultsBody.innerHTML = "";
+      signals.forEach(signal => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${signal.label}</td>
+          <td>${signal.mybrand}</td>
+          <td>${signal.competitor}</td>
+        `;
+        resultsBody.appendChild(row);
+      });
+      insightNote.textContent = `${channel} shows ${signals.filter(signal => signal.mybrand > signal.competitor).length} uplift signal(s) for ${product}.`;
+    }
+
+    function updateChart(product, channel) {
+      const scores = GEO_DATA[product].channels[channel].scores;
+      const maxScore = Math.max(100, ...Object.values(scores));
+      const heightScale = score => `${Math.max(14, (score / maxScore) * 100)}%`;
+
+      myBrandBar.style.height = heightScale(scores["mybrand.com"]);
+      competitorBar.style.height = heightScale(scores["competitor.com"]);
+      myBrandValue.textContent = scores["mybrand.com"];
+      competitorValue.textContent = scores["competitor.com"];
+
+      chartCaption.textContent = `${channel} visibility for ${product} (${personaSelect.value} persona).`;
+    }
+
+    function updateDashboard() {
+      const product = productSelect.value;
+      const channel = channelSelect.value;
+      updateSummary(product, channel);
+      updateTable(product, channel);
+      updateChart(product, channel);
+    }
+
+    productSelect.addEventListener("change", () => {
+      populateChannels(productSelect.value);
+      updateDashboard();
+    });
+
+    channelSelect.addEventListener("change", updateDashboard);
+    personaSelect.addEventListener("change", updateDashboard);
+
+    // Initialize
+    populateChannels(productSelect.options[0].value);
+    updateDashboard();
+  </script>
+</body>
+</html>
