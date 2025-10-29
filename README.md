@@ -2,7 +2,7 @@
 ### En cours d'apprentissage
 
 #### Gestion de projet
-- https://openclassrooms.com/fr/courses/4849646-project-management-101 [ ]
+- https://openclassrooms.com/fr/courses/4849646-project-management-101 []
 - https://openclassrooms.com/fr/courses/8186936-gerez-un-projet-avec-la-methodologie-cycle-en-v [ ]
 
 #### Market et Business plan
