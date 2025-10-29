@@ -159,6 +159,28 @@ body {
   background: linear-gradient(90deg, var(--accent-teal), var(--primary));
 }
 
+.influence-gradient {
+  background: linear-gradient(
+      130deg,
+      rgba(11, 18, 32, 0.92),
+      rgba(79, 70, 229, 0.78),
+      rgba(168, 85, 247, 0.72)
+    ),
+    radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.35), transparent 55%);
+  position: relative;
+  overflow: hidden;
+}
+
+.influence-gradient::after {
+  content: "";
+  position: absolute;
+  inset: -30% 10% 40% -20%;
+  background: radial-gradient(circle, rgba(180, 205, 255, 0.35), transparent 70%);
+  opacity: 0.7;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
 .section-divider {
   position: relative;
   height: 1px;
