@@ -45,4 +45,7 @@
     <path d="M13 12h6" fill="none" stroke="currentColor" stroke-width="2"></path>
     <path d="M13 18h6" fill="none" stroke="currentColor" stroke-width="2"></path>
   </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
 </svg>

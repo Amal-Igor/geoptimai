@@ -32,6 +32,12 @@
               700: "#1f2937",
               900: "#0f172a",
             },
+            accent: {
+              teal: "#22d3ee",
+              pink: "#f472b6",
+              lime: "#bef264",
+            },
+            background: "#f7f6ff",
           },
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', "Inter", "system-ui", "sans-serif"],
@@ -50,8 +56,9 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-white text-ink font-sans antialiased">
-  <header class="relative z-20 border-b border-indigo-100/40 bg-white/90 backdrop-blur">
+<body class="text-ink font-sans antialiased">
+  <header class="relative z-20 border-b backdrop-blur"
+    style="border-color: rgba(99,102,241,0.18); background: rgba(247,246,255,0.9);">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
       <a class="flex items-center gap-3 text-lg font-bold tracking-tight text-ink" href="#">
         <img src="assets/logos/logo-optim-ai.svg" alt="optimAI logo" class="h-10 w-auto" width="128" height="40" />
@@ -80,7 +87,7 @@
   </header>
 
   <main>
-    <section id="hero" class="relative overflow-hidden">
+    <section id="hero" class="relative overflow-hidden hero-background">
       <div
         class="mx-auto max-w-7xl px-6 pb-20 pt-16 sm:pb-24 lg:flex lg:min-h-[80vh] lg:items-center lg:pb-32 lg:pt-24">
         <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
@@ -131,12 +138,11 @@
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
                 <defs>
                   <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#00D4FF" />
-                    <stop offset="1" stop-color="#0061FF" />
+                    <stop offset="0" stop-color="#6366F1" />
+                    <stop offset="1" stop-color="#A855F7" />
                   </linearGradient>
                 </defs>
 
-                <!-- Centre l'icône puis applique une mise à l'échelle pulsée sur le groupe interne -->
                 <g transform="translate(60 60)">
                   <g>
                     <!-- Anneau principal -->
@@ -146,15 +152,12 @@
                       stroke-linecap="round" opacity="0.9" />
                     <path d="M-30,0a30,18 0 0 0 60,0" fill="none" stroke="url(#g)" stroke-width="4"
                       stroke-linecap="round" opacity="0.8" />
-                    <!-- Nœuds -->
-                    <circle cx="-40" cy="0" r="5" fill="url(#g)" />
-                    <circle cx="40" cy="0" r="5" fill="url(#g)" />
-                    <circle cx="0" cy="-44" r="5" fill="url(#g)" />
-                    <!-- Étincelle d’optimisation -->
-                    <path d="M0 -6 l0 -8 M0 6 l0 8 M-6 0 l-8 0 M6 0 l8 0" stroke="url(#g)" stroke-width="3"
+                    <circle cx="-40" cy="0" r="5" fill="#22D3EE" />
+                    <circle cx="40" cy="0" r="5" fill="#F472B6" />
+                    <circle cx="0" cy="-44" r="5" fill="#6366F1" />
+                    <path d="M0 -6 l0 -8 M0 6 l0 8 M-6 0 l-8 0 M6 0 l8 0" stroke="#A855F7" stroke-width="3"
                       stroke-linecap="round" />
-                    <!-- Animation: grossit puis rétrécit -->
-                    <animateTransform attributeName="transform" type="scale" values="1;1.12;1" dur="2s"
+                    <animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2.6s"
                       repeatCount="indefinite" />
                   </g>
                 </g>
@@ -167,8 +170,7 @@
 
     <div class="section-divider"></div>
 
-    <section id="era"
-      class="relative overflow-hidden bg-gradient-to-br from-white via-primary-light to-indigo-100/60 py-20 text-ink sm:py-24">
+    <section id="era" class="relative overflow-hidden era-band py-20 text-ink sm:py-24">
       <div class="pointer-events-none absolute inset-0 opacity-80">
         <div class="absolute left-0 top-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[140px]"></div>
         <div class="absolute right-[-10%] top-1/2 h-80 w-80 rounded-full bg-fuchsia-300/25 blur-[140px]"></div>
@@ -186,11 +188,13 @@
           </p>
         </div>
         <div class="mt-12 grid gap-8 sm:grid-cols-3">
-          <div class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm"
+          <div class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm era-column"
             data-animate="fade-up">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <use href="assets/icons/optimai-icons.svg#icon-search" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="27" cy="27" r="16" stroke="#0B1220" stroke-width="4" />
+                <line x1="38.828" y1="38.828" x2="56" y2="56" stroke="#0B1220" stroke-width="4"
+                  stroke-linecap="round" />
               </svg>
             </div>
             <h3 class="text-xl font-semibold text-ink">Observe</h3>
@@ -199,12 +203,17 @@
               captures every answer verbatim.
             </p>
           </div>
-          <div class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm"
+          <div class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm era-column"
             data-animate="fade-up" data-animate-delay="0.08s">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <use href="assets/icons/optimai-icons.svg#icon-eye" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+           2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09
+           C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5
+           c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
               </svg>
+
             </div>
             <h3 class="text-xl font-semibold text-ink">Diagnose</h3>
             <p class="mt-2 text-sm text-ink/70">
@@ -213,21 +222,29 @@
             </p>
           </div>
           <div
-            class="rounded-2xl border border-primary/10 bg-gradient-to-br from-white via-primary-light to-white p-[1px] shadow-xl"
+            class="rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-xl backdrop-blur-sm era-column"
             data-animate="fade-up" data-animate-delay="0.16s">
-            <div class="h-full rounded-2xl bg-white p-6">
               <div
                 class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <use href="assets/icons/optimai-icons.svg#icon-arrow-collapse" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none"
+                  stroke="#0B1220" stroke-width="2">
+                  <!-- Planète -->
+                  <circle cx="32" cy="32" r="12" fill="none" />
+
+                  <!-- Anneau incliné -->
+                  <ellipse cx="32" cy="32" rx="20" ry="8" transform="rotate(-25 32 32)" fill="none" />
+
+                  <!-- Détail décoratif -->
+                  <path d="M24 24 C26 20, 38 20, 40 24" stroke="#0B1220" stroke-width="1" fill="none" />
                 </svg>
+
+
               </div>
               <h3 class="text-xl font-semibold text-ink">Improve</h3>
               <p class="mt-2 text-sm text-ink/70">
                 Deploy optimAI playbooks that fix AI answers at the source—structured data, support content, PR, and
                 assistant integrations.
               </p>
-            </div>
           </div>
         </div>
         <p class="mt-12 text-center text-sm uppercase tracking-[0.3em] text-ink/60">
@@ -236,7 +253,7 @@
       </div>
     </section>
 
-    <section id="coverage" class="bg-slate-50 py-20 sm:py-24">
+    <section id="coverage" class="section-soft py-20 sm:py-24">
       <div class="mx-auto max-w-6xl px-6">
         <div class="text-center" data-animate="fade-up">
           <h2 class="text-3xl font-black text-ink sm:text-4xl">
@@ -364,204 +381,112 @@
       </div>
     </section>
 
-    <section id="visibility" class="pt-16 sm:pt-20 bg-white">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="bg-emerald-50 p-4 sm:p-8">
-          <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-            <div>
-              <div class="mx-auto max-w-3xl">
-                <div class="mb-3"><span
-                    class="inline-flex items-center gap-2 border border-emerald-200 bg-white px-3 py-1 text-xs font-medium text-emerald-700">AI
-                    Search</span></div>
-                <h3 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Win the new answer box</h3>
-                <p class="mt-3 text-gray-900/70">Traditional SEO stops at ten blue links. We help you influence what AI
-                  actually says by turning insights into action.</p>
+    <section id="visibility" class="pt-16 sm:pt-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="insight-panel p-8 sm:p-12">
+          <div class="grid gap-10 md:grid-cols-2 md:items-center">
+            <div class="space-y-6">
+              <span class="insight-chip">
+                <svg class="h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <use href="assets/icons/optimai-icons.svg#icon-globe" />
+                </svg>
+                AI Visibility Pulse
+              </span>
+              <h3 class="text-3xl font-black text-ink sm:text-4xl">
+                Track share of answers across every assistant
+              </h3>
+              <p class="text-base text-ink/70">
+                Our live audit reveals how models cite your brand, where competitors edge ahead, and which updates move
+                the needle fastest.
+              </p>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex items-center justify-between text-sm text-ink/70">
+                    <span>Overall share of answer</span>
+                    <span class="font-semibold text-ink">68%</span>
+                  </div>
+                  <div class="mt-2 progress-track">
+                    <div class="progress-bar" style="width:68%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between text-sm text-ink/70">
+                    <span>ChatGPT coverage</span>
+                    <span class="font-semibold text-ink">72%</span>
+                  </div>
+                  <div class="mt-2 progress-track">
+                    <div class="progress-bar" style="width:72%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between text-sm text-ink/70">
+                    <span>Claude coverage</span>
+                    <span class="font-semibold text-ink">66%</span>
+                  </div>
+                  <div class="mt-2 progress-track">
+                    <div class="progress-bar" style="width:66%"></div>
+                  </div>
+                </div>
               </div>
-              <div class="mt-8 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">Overall Share of
-                      Answer</span><span class="font-semibold text-gray-900">68<!-- -->%</span></div>
-                  <div class="mt-2 h-2 bg-emerald-50">
-                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:68%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">ChatGPT
-                      Coverage</span><span class="font-semibold text-gray-900">72<!-- -->%</span></div>
-                  <div class="mt-2 h-2 bg-emerald-50">
-                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:72%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">Claude
-                      Coverage</span><span class="font-semibold text-gray-900">66<!-- -->%</span></div>
-                  <div class="mt-2 h-2 bg-emerald-50">
-                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:66%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex items-center justify-between text-sm"><span class="text-gray-900/70">Perplexity
-                      Coverage</span><span class="font-semibold text-gray-900">61<!-- -->%</span></div>
-                  <div class="mt-2 h-2 bg-emerald-50">
-                    <div class="h-2 bg-gradient-to-r from-[#61EEC2] to-[#8EE6FF]" style="width:61%"></div>
-                  </div>
-                </div>
-              </div>
-              <ul class="mt-6 space-y-2 text-sm text-secondary">
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" class="lucide lucide-check mt-1 h-4 w-4 text-primary" aria-hidden="true">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>Identify the sources models cite most and which to improve.</li>
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" class="lucide lucide-check mt-1 h-4 w-4 text-primary" aria-hidden="true">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>See how LLMs describe your brand vs. competitors.</li>
-                <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" class="lucide lucide-check mt-1 h-4 w-4 text-primary" aria-hidden="true">
-                    <path d="M20 6 9 17l-5-5"></path>
-                  </svg>Measure week-over-week, prove ROI in the boardroom.</li>
+              <ul class="space-y-3 text-sm text-ink/70">
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <use href="assets/icons/optimai-icons.svg#icon-check" />
+                  </svg>
+                  Identify the sources models cite most and which to elevate.
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <use href="assets/icons/optimai-icons.svg#icon-check" />
+                  </svg>
+                  Compare how agents describe your brand versus competitors.
+                </li>
+                <li class="flex items-start gap-3">
+                  <svg class="mt-1 h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <use href="assets/icons/optimai-icons.svg#icon-check" />
+                  </svg>
+                  Measure weekly shifts and prove ROI to leadership.
+                </li>
               </ul>
             </div>
-            <div class="relative">
-              <div class="relative bg-white p-4 sm:p-6">
-                <div class="absolute -right-6 -top-6 h-28 w-28 opacity-30 blur-2xl" style="background:#61EEC2"></div>
-                <div class="flex items-center justify-between"><span
-                    class="inline-flex items-center gap-2 border border-emerald-200 bg-white px-2.5 py-1 text-xs font-medium text-emerald-700"><svg
-                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="lucide lucide-chart-column h-3.5 w-3.5" aria-hidden="true">
-                      <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
-                      <path d="M18 17V9"></path>
-                      <path d="M13 17V5"></path>
-                      <path d="M8 17v-3"></path>
-                    </svg> Share of voice</span><span class="text-xs text-gray-900/60">Last 7 days</span></div>
-                <div class="mt-4 h-28">
-                  <div class="recharts-responsive-container pointer-events-none"
-                    style="width: 100%; height: 100%; min-width: 0px;">
-                    <div style="width: 0px; height: 0px; overflow: visible;">
-                      <div class="recharts-wrapper"
-                        style="position: relative; cursor: default; width: 508px; height: 112px;"><svg
-                          role="application" tabindex="0" class="recharts-surface" width="508" height="112"
-                          viewBox="0 0 508 112" style="width: 100%; height: 100%;">
-                          <title></title>
-                          <desc></desc>
-                          <defs>
-                            <clipPath id="recharts1-clip">
-                              <rect x="5" y="5" height="102" width="498"></rect>
-                            </clipPath>
-                          </defs>
-                          <g class="recharts-cartesian-grid">
-                            <g class="recharts-cartesian-grid-horizontal">
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="5" y1="51.36363636363637" x2="503" y2="51.36363636363637"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="5" y1="5" x2="503" y2="5"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="5" y1="107" x2="503" y2="107"></line>
-                            </g>
-                            <g class="recharts-cartesian-grid-vertical">
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="50.27272727272727" y1="5" x2="50.27272727272727" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="95.54545454545455" y1="5" x2="95.54545454545455" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="140.8181818181818" y1="5" x2="140.8181818181818" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="186.0909090909091" y1="5" x2="186.0909090909091" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="231.36363636363637" y1="5" x2="231.36363636363637" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="276.6363636363636" y1="5" x2="276.6363636363636" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="321.90909090909093" y1="5" x2="321.90909090909093" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="367.1818181818182" y1="5" x2="367.1818181818182" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="412.45454545454544" y1="5" x2="412.45454545454544" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="457.72727272727275" y1="5" x2="457.72727272727275" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="503" y1="5" x2="503" y2="107"></line>
-                              <line stroke-dasharray="3 3" stroke="#E2F7F2" fill="none" x="5" y="5" width="498"
-                                height="102" x1="5" y1="5" x2="5" y2="107"></line>
-                            </g>
-                          </g>
-                          <g class="recharts-layer recharts-line">
-                            <path stroke="#61EEC2" stroke-width="2" fill="none" id="recharts-line-«r1c»" height="102"
-                              width="498" class="recharts-curve recharts-line-curve"
-                              stroke-dasharray="506.4769592285156px 0px"
-                              d="M5,84.745C20.091,81.5,35.182,78.255,50.273,75.473C65.364,72.691,80.455,70.836,95.545,68.055C110.636,65.273,125.727,58.782,140.818,58.782C155.909,58.782,171,66.2,186.091,66.2C201.182,66.2,216.273,58.473,231.364,55.073C246.455,51.673,261.545,48.582,276.636,45.8C291.727,43.018,306.818,38.382,321.909,38.382C337,38.382,352.091,42.091,367.182,42.091C382.273,42.091,397.364,34.982,412.455,32.818C427.545,30.655,442.636,30.964,457.727,29.109C472.818,27.255,487.909,24.473,503,21.691">
-                            </path>
-                          </g>
-                        </svg></div>
-                    </div>
+            <div class="space-y-6">
+              <div class="rounded-2xl bg-white/85 p-6 shadow-xl ring-1 ring-primary/15 backdrop-blur">
+                <h4 class="text-xs font-semibold uppercase tracking-[0.32em] text-primary-dark">Weekly momentum</h4>
+                <div class="mt-6 space-y-4 text-sm text-ink/70">
+                  <div class="flex items-center justify-between">
+                    <span>New insights shipped</span>
+                    <span class="inline-flex items-center gap-2 text-ink font-semibold">14
+                      <span class="rounded-full bg-primary/10 px-2 py-0.5 text-xs text-primary-dark">+5</span>
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span>Recommendations implemented</span>
+                    <span class="inline-flex items-center gap-2 text-ink font-semibold">9
+                      <span class="rounded-full bg-accent-teal/15 px-2 py-0.5 text-xs text-accent-teal">+3</span>
+                    </span>
                   </div>
                 </div>
-                <div class="hidden sm:grid mt-6 grid-cols-2 gap-4 text-sm">
-                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
-                    <div class="flex items-center justify-between"><span class="font-medium text-gray-900">Top
-                        Cited</span><span class="text-xs text-gray-900/60">88<!-- -->%</span></div>
-                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
-                        aria-hidden="true">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                      </svg> <!-- -->brand.com/docs</div>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl bg-white/80 p-4 shadow-lg ring-1 ring-primary/12">
+                  <div class="flex items-center gap-2 text-sm font-semibold text-ink">
+                    <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <use href="assets/icons/optimai-icons.svg#icon-globe" />
+                    </svg>
+                    Markets monitored
                   </div>
-                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
-                    <div class="flex items-center justify-between"><span
-                        class="font-medium text-gray-900">Industry</span><span
-                        class="text-xs text-gray-900/60">81<!-- -->%</span></div>
-                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
-                        aria-hidden="true">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                      </svg> <!-- -->industry.org</div>
-                  </div>
-                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
-                    <div class="flex items-center justify-between"><span
-                        class="font-medium text-gray-900">News</span><span
-                        class="text-xs text-gray-900/60">72<!-- -->%</span></div>
-                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
-                        aria-hidden="true">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                      </svg> <!-- -->news.site</div>
-                  </div>
-                  <div class="rounded-md border border-emerald-100 bg-emerald-50/40 p-4">
-                    <div class="flex items-center justify-between"><span
-                        class="font-medium text-gray-900">Community</span><span
-                        class="text-xs text-gray-900/60">54<!-- -->%</span></div>
-                    <div class="mt-1 flex items-center gap-2 text-gray-900"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link h-4 w-4"
-                        aria-hidden="true">
-                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                      </svg> <!-- -->forum.example</div>
-                  </div>
+                  <p class="mt-3 text-2xl font-bold text-ink">27</p>
+                  <p class="text-xs uppercase tracking-[0.3em] text-ink/50">Live GEO footprints</p>
                 </div>
-                <div class="mt-6 rounded-md border border-emerald-100 bg-white p-4">
-                  <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" class="lucide lucide-zap h-4 w-4 text-emerald-600" aria-hidden="true">
-                      <path
-                        d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
-                      </path>
-                    </svg><span class="text-sm font-medium text-gray-900">Actions suggested</span></div>
-                  <ul class="mt-2 list-disc space-y-1 pl-6 text-sm text-gray-900/80">
-                    <li>Strengthen documentation pages with structured citations.</li>
-                    <li>Pitch an expert quote to earn a news.site mention.</li>
-                    <li>Publish a comparison guide targeting missing queries.</li>
-                  </ul>
+                <div class="rounded-2xl bg-white/80 p-4 shadow-lg ring-1 ring-primary/12">
+                  <div class="flex items-center gap-2 text-sm font-semibold text-ink">
+                    <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <use href="assets/icons/optimai-icons.svg#icon-structure" />
+                    </svg>
+                    Answer accuracy
+                  </div>
+                  <p class="mt-3 text-2xl font-bold text-ink">98%</p>
+                  <p class="text-xs uppercase tracking-[0.3em] text-ink/50">Post-playbook adoption</p>
                 </div>
               </div>
             </div>
@@ -570,7 +495,7 @@
       </div>
     </section>
 
-    <section id="cta" class="relative bg-gradient-to-br from-primary/10 via-white to-fuchsia-100/30 py-24">
+    <section id="cta" class="relative cta-gradient py-24">
       <div class="mx-auto max-w-5xl px-6 text-center">
         <span data-animate="fade-up"
           class="inline-flex items-center justify-center gap-2 rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary-dark">
@@ -596,7 +521,7 @@
     </section>
   </main>
 
-  <footer id="contact" class="bg-ink-900 text-white">
+  <footer id="contact" class="dark-band text-white">
     <div class="mx-auto max-w-6xl px-6 py-12">
       <div class="grid gap-10 md:grid-cols-4">
         <div class="space-y-4">
