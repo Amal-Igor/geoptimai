@@ -2,22 +2,22 @@
 ### En cours d'apprentissage
 
 #### Gestion de projet
-- [ ] https://openclassrooms.com/fr/courses/4849646-project-management-101
+- [x] https://openclassrooms.com/fr/courses/4849646-project-management-101
 - [ ] https://openclassrooms.com/fr/courses/8186936-gerez-un-projet-avec-la-methodologie-cycle-en-v
 
 #### Market et Business plan
-- [ ] https://openclassrooms.com/fr/courses/5191546-construisez-un-business-plan
+- [x] https://openclassrooms.com/fr/courses/5191546-construisez-un-business-plan
 - [ ] https://openclassrooms.com/fr/courses/6067991-realisez-une-etude-de-marche
-- [ ] https://openclassrooms.com/fr/courses/2954176-lancez-votre-projet-innovant
-- [ ] https://openclassrooms.com/fr/courses/7778566-gerez-vos-relations-client-grace-au-crm
+- [x] https://openclassrooms.com/fr/courses/2954176-lancez-votre-projet-innovant
+- [x] https://openclassrooms.com/fr/courses/7778566-gerez-vos-relations-client-grace-au-crm
 
 #### LLM et SEO
-- [ ] https://www.youtube.com/watch?v=i6oCzcWEAWk
+- [x] https://www.youtube.com/watch?v=i6oCzcWEAWk
 - [ ] https://www.youtube.com/watch?v=vRUAVZj68Zg
-- [ ] https://www.youtube.com/watch?v=ELchoAnnp0g
-- [ ] https://www.udemy.com/course/llm-seo-geo-get-ai-to-recommend-you/?couponCode=MT251028G19
+- [x] https://www.youtube.com/watch?v=ELchoAnnp0g
+- [x] https://www.udemy.com/course/llm-seo-geo-get-ai-to-recommend-you/?couponCode=MT251028G19
 - [ ] https://www.udemy.com/course/le-guide-ultime-du-geo-generative-engine-optimisation-et-llm-seo/?couponCode=MT251028G19
-- [ ] https://www.youtube.com/watch?v=G5VZzjrSFTQ
+- [x] https://www.youtube.com/watch?v=G5VZzjrSFTQ
 - [ ] https://roadmap.sh/r/llm-engineer-ay1q6 -> roadmap en cours
 
 #### Ressources
