@@ -7,9 +7,9 @@
 
 #### Market et Business plan
 - [ ] https://openclassrooms.com/fr/courses/5191546-construisez-un-business-plan
-- https://openclassrooms.com/fr/courses/6067991-realisez-une-etude-de-marche
-- https://openclassrooms.com/fr/courses/2954176-lancez-votre-projet-innovant
-- https://openclassrooms.com/fr/courses/7778566-gerez-vos-relations-client-grace-au-crm
+- [ ] https://openclassrooms.com/fr/courses/6067991-realisez-une-etude-de-marche
+- [ ] https://openclassrooms.com/fr/courses/2954176-lancez-votre-projet-innovant
+- [ ] https://openclassrooms.com/fr/courses/7778566-gerez-vos-relations-client-grace-au-crm
 
 #### LLM et SEO
 - [ ] https://www.youtube.com/watch?v=i6oCzcWEAWk
